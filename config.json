@@ -1,0 +1,25 @@
+{
+    "input_posts": "data/posts.txt",
+    "input_events": "data/events.txt",
+    "output_path": "output",
+    "schema_posts": {
+            "fields": [
+            { "metadata": {}, "name": "hash", "nullable": true, "type": "string" },
+            { "metadata": {}, "name": "author_uid", "nullable": true, "type": "long" },
+            { "metadata": {}, "name": "channel", "nullable": true, "type": "string" },
+            { "metadata": {}, "name": "created_at", "nullable": true, "type": "long" }
+            ],
+            "type": "struct"
+        },
+    "schema_events": {
+            "fields": [
+            { "metadata": {}, "name": "uid", "nullable": true, "type": "long" },
+            { "metadata": {}, "name": "ts", "nullable": true, "type": "long" },
+            { "metadata": {}, "name": "type", "nullable": true, "type": "string" },
+            { "metadata": {}, "name": "data", "nullable": true, "type": "string" }
+            ],
+            "type": "struct"
+        },
+    "log_file": "output/log.txt" 
+
+}
