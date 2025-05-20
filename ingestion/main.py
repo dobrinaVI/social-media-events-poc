@@ -1,5 +1,4 @@
 import json
-import os
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType
@@ -11,13 +10,13 @@ def main():
 
     #print(config)    
 
-    spark = SparkSession.builder.appName("SocialMediaETL").getOrCreate()
+    spark = SparkSession.builder.appName("SocialMediaETLPOC").getOrCreate()
 
     # Convert schemas from config JSON
     schema_posts = StructType.fromJson(config["schema_posts"])
     schema_events = StructType.fromJson(config["schema_events"])
 
-    etl = Ingestion(spark, config["output_path"], config["log_file"])
+    etl = Ingestion(spark, config["output_bronse"], config["log_file"])
     etl.ingest_posts(config["input_posts"], schema_posts)
     etl.ingest_events(config["input_events"], schema_events)
 
