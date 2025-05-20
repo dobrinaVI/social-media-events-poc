@@ -1,7 +1,7 @@
 {
     "input_posts": "data/posts.txt",
     "input_events": "data/events.txt",
-    "output_bronse": "output/bronse",
+    "output_bronse": "output/bronze",
     "schema_posts": {
             "fields": [
             { "metadata": {}, "name": "hash", "nullable": true, "type": "string" },
