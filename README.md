@@ -6,13 +6,15 @@ POC for a social media analytics pipeline. The raw data consists of user interac
 Transform raw event data into structured, analytics-ready datasets to support dashboarding and advanced analysis.
 
 ## Data Description
-1. *Posts* dataset: Contains post metadata:
+Input data consists of 2 datasets/tables: posts and events.
+
+1. Posts are in the `posts.txt` file, tab-separated, with schema:
     * `hash`: string ID of the post
     * `author_uid`: numeric ID of the author of the post
     * `channel`: name of channel; posts can be optionally tagged with a topic/channel
     * `created_at`: timestamp of posting, in msec since Unix epoch
 
-2. *Events* dataset: Contains user events:
+2. Events are in the `events.txt` file, tab-separated, with schema:
     - `uid`: numeric ID of the user performing the action  
     - `ts`: timestamp of the event, in milliseconds since Unix epoch  
     - `type`: type of the event, either `post-view` or `post-interaction`  
@@ -38,13 +40,16 @@ Transform raw event data into structured, analytics-ready datasets to support da
         - `reply`: user replied to the post  
         - `share`: user shared the post (e.g., copied direct link)  
 
+## Expected output
+Database with flattened tables.        
+
 ## 🏁 Pipeline Steps
-1. Ingestion: Reads raw .txt input files, applies schema, writes to Parquet.
+1. Ingestion into BRONZE layer: Reads raw .txt input files, applies schema, writes to Parquet.
 ```
 python ingestion/main.py
 ```
-2. (upcoming) DuckDB Creation : Loads Parquet files into DuckDB tables for further querying and analysis.
-3. (upcoming) Set up a DBT project for transformation
+2. (upcoming) Set up a DBT project for transformation
+3. (upcoming) DuckDB Creation : Loads flattened tables into DuckDB tables for further querying and analysis.
 
 ## 🧪 Testing
 1. Test Ingestion
