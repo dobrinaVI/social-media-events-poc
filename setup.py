@@ -14,7 +14,9 @@ setup(
         "pytest-pythonpath==0.7.4",
         "duckdb==1.2.2", 
         "dbt-core==1.9.4",
-        "dbt-duckdb==1.9.3"
+        "dbt-duckdb==1.9.3",
+        'pandas==2.2.3',
+        'pyarrow==20.0.0',
     ],
     entry_points={
         "console_scripts": [

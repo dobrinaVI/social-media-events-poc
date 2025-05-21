@@ -17,7 +17,7 @@ class Ingestion():
     def ingest_posts(self, input_posts, schema_posts):
         try:
             df = self.spark.read.csv(input_posts, sep="\t", schema=schema_posts)
-            df.write.mode("overwrite").parquet(os.path.join(self.output_path, "posts"))
+            df.write.mode("append").parquet(os.path.join(self.output_path, "posts"))
             self.logger.log("INFO", "Ingested posts: COMPLETED")
         except Exception as e:
             self.logger.log("ERROR", f"Ingested posts: FAILED - {e}")
@@ -26,7 +26,7 @@ class Ingestion():
     def ingest_events(self, input_events, schema_events):
         try:
             df = self.spark.read.csv(input_events, sep="\t", schema=schema_events)
-            df.write.mode("overwrite").parquet(os.path.join(self.output_path, "events"))
+            df.write.mode("append").parquet(os.path.join(self.output_path, "events"))
             self.logger.log("INFO", "Ingested events: COMPLETED")
         except Exception as e:
             self.logger.log("ERROR", f"Ingested events: FAILED - {e}")
